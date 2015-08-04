@@ -20,11 +20,10 @@ for x in range(0, len(args.files)):
         system("sips -s format pdf -s formatOptions best " + args.files[x] + " --out " + name + ".pdf");
         files.append(name + ".pdf");
 
-
 output = PdfFileWriter();
 
 for i in range(0, len(files)):
-    picture = PdfFileReader(open(files[i], "rb"));
+    picture = PdfFileReader(file(files[i], "r+b"));
 
     page = picture.getPage(0);
     size = page.mediaBox;
@@ -41,17 +40,14 @@ for i in range(0, len(files)):
     if y*scale > 842:
         scale = 842 / y;
 
-    x *= scale;
-    y *= scale;
-    x = round(x);
-    y = round(y);
-
-    print "Picture:", i, "X:", x, "Y:", y, "Scale:", scale;
+    page.mediaBox.upperRight = (x*scale, y*scale);
     output.addPage(page);
-    output.getPage(i).mediaBox.upperRight = (x, y);
 
+output.setPageLayout(layout='/NoLayout')
 outputStream = file(args.target[0], "wb");
 output.write(outputStream);
 
 for x in range(0, len(files)):
     system("rm " + files[x]);
+
+system("open " + args.target[0]);
