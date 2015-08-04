@@ -33,17 +33,15 @@ for i in range(0, len(files)):
 
     if x > y:
         page.rotateClockwise(90);
-        x = size[2];
-        y = size[3];
-    scale = 1;
+        x = size[3];
+        y = size[2];
+    scale = 595 / x;
 
     if y*scale > 842:
         scale = 842 / y;
 
-    size[2] = x;
-    size[3] = y;
+    page.mediaBox.upperRight = (x*scale, y*scale);
     output.addPage(page);
-    output.getPage(i).mediaBox = size;
 
 output.setPageLayout(layout='/NoLayout')
 outputStream = file(args.target[0], "wb");
