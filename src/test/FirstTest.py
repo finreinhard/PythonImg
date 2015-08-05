@@ -17,7 +17,8 @@ files = [];
 for x in range(0, len(args.files)):
     if path.isfile(args.files[x]):
         name = str.split(args.files[x], ".")[0];
-        system("sips -s format pdf -s formatOptions best " + args.files[x] + " --out " + name + ".pdf");
+        im = Image.open(args.files[x]);
+        im.save(name + '.pdf');
         files.append(name + ".pdf");
 
 output = PdfFileWriter();
@@ -31,17 +32,12 @@ for i in range(0, len(files)):
     x = size[2];
     y = size[3];
 
+    scale = x/y;
+
     if x > y:
         page.rotateClockwise(90);
-    scale = 595 / x;
-
-    if y*scale > 842:
-        scale = 842 / y;
-
-    print size[2], size[3];
-    size[2] = str(x*scale);
-    size[3] = str(y*scale);
-    print size[2], size[3];
+    size.upperRight = (595, 842);
+    page.mediaBox = size;
     output.addPage(page);
     output.getPage(i).mediaBox = size;
 
