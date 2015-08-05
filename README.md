@@ -28,7 +28,7 @@ Auch kann die Output Datei einen anderen Namen bekommen, oder in einem anderem O
 
 **Achtung!** Die Output Datei kann ggf. eine andere Datei überschreiben, wenn sie den gleichen Namen haben.
 
-Beispiel:
+**Beispiel:**
 
 ```shell
 /usr/bin/python run.py BildA.jpg BildB.jpg BildC.jpg bilder.pdf
