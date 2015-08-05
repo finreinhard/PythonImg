@@ -1,6 +1,6 @@
 # PythonImg
-1. Downloade den src/Pic2PDF Ordner
-2. Führe die run.py Datei aus:
+1. Downloade den `src/Pic2PDF Ordner`
+2. Führe die `run.py` Datei aus:
 
 **Beispiel:**
     
