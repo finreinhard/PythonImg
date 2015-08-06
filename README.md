@@ -13,7 +13,7 @@ Es können x-Beliebige Dateien hinzugefügt werden.
 **Beispiel:**
 
 ```shell
-/usr/bin/python run.py BildA.jpg BildB.jpg BildC.jpg output.pdf
+/usr/bin/python run.py BildA.jpg BildB.jpg BildC.jpg ... output.pdf
 ```
 
 Es können verschiedene Dateiendungen genutzt werden.
